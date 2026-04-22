@@ -10,4 +10,14 @@ class AppAssets {
   static const String object = '$_base/object.png';
   static const String shape1 = '$_base/Shape1.png';
   static const String shape2 = '$_base/Shape2.png';
+  static const String group = '$_base/Group.png';
+  static const String flagUS = '$_base/US.png';
+  static const String flagPak = '$_base/pak.png';
+
+  // ─── Intro page illustrations ──────────────────────────────────────────
+
+  static const String welcome = '$_base/welcome 1.png';
+  static const String kabba = '$_base/kabba 1.png';
+  static const String bearish = '$_base/bearish 1.png';
+  static const String radio = '$_base/radio 1.png';
 }
