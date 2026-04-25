@@ -1,22 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:islami/const/app_assets.dart';
 
-class IntroHeader extends StatelessWidget {
-  const IntroHeader({super.key});
+/* Reusable header widget showing the mosque silhouette and Islami wordmark.
+
+ Can be used as a direct child inside a [Stack] (positioned mode) or as a
+ normal widget inside a [Column] / [SliverToBoxAdapter].
+ When [positioned] is `true` (default) the header wraps itself in a
+ [Positioned] widget suitable for a parent [Stack] (used in the intro screen).
+ Set [positioned] to `false` to use it as a regular box widget (home screen).*/
+
+class IslamiHeader extends StatelessWidget {
+  /// If `true`, wraps the header in a [Positioned] widget.
+  final bool positioned;
+
+  const IslamiHeader({super.key, this.positioned = false});
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
+    final double headerH = size.height * 0.22;
     final double mosqueTop = size.height * 0.043;
     final double mosqueW = size.width * 0.677;
     final double islaTop = size.height * 0.123;
     final double islaW = size.width * 0.386;
 
-    return Positioned(
-      top: 0,
-      left: 0,
-      right: 0,
-      height: size.height * 0.22,
+    final child = SizedBox(
+      height: headerH,
       child: Stack(
         children: [
           Positioned(
@@ -46,5 +55,17 @@ class IntroHeader extends StatelessWidget {
         ],
       ),
     );
+
+    if (positioned) {
+      return Positioned(
+        top: 0,
+        left: 0,
+        right: 0,
+        height: headerH,
+        child: child,
+      );
+    }
+
+    return child;
   }
 }

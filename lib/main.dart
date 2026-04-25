@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:islami/const/app_strings.dart';
 import 'package:islami/core/app_theme.dart';
 import 'package:islami/screens/intro/intro_provider.dart';
+import 'package:islami/screens/home/home_provider.dart';
 import 'package:islami/screens/splash/splash_screen.dart';
 
 void main() {
@@ -26,6 +27,9 @@ class IslamiApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<IntroProvider>.value(
           value: IntroProvider.instance,
+        ),
+        ChangeNotifierProvider<HomeProvider>.value(
+          value: HomeProvider.instance,
         ),
       ],
       child: MaterialApp(

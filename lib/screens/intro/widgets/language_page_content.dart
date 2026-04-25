@@ -5,7 +5,6 @@ import 'package:islami/const/app_colors.dart';
 import 'package:islami/const/app_strings.dart';
 import 'package:islami/screens/intro/intro_provider.dart';
 
-/// Page 0: Arabic calligraphy illustration + language chooser.
 class LanguagePageContent extends StatelessWidget {
   const LanguagePageContent({super.key});
 
@@ -16,7 +15,6 @@ class LanguagePageContent extends StatelessWidget {
     return Stack(
       fit: StackFit.expand,
       children: [
-        // Calligraphy illustration
         Positioned(
           top: size.height * 0.278,
           left: 0,
@@ -29,7 +27,6 @@ class LanguagePageContent extends StatelessWidget {
             ),
           ),
         ),
-        // Language label + toggle
         Positioned(
           left: 0,
           right: 0,
@@ -47,8 +44,6 @@ class LanguagePageContent extends StatelessWidget {
     );
   }
 }
-
-// ─── "Chose Language" label ─────────────────────────────────────────────────
 
 class _ChoseLanguageLabel extends StatelessWidget {
   const _ChoseLanguageLabel();
@@ -68,8 +63,6 @@ class _ChoseLanguageLabel extends StatelessWidget {
     );
   }
 }
-
-// ─── Language toggle (US → English / Pak → Urdu) ─────────────────────────────
 
 class _LanguageToggle extends StatelessWidget {
   const _LanguageToggle();
@@ -122,8 +115,6 @@ class _LanguageToggle extends StatelessWidget {
     );
   }
 }
-
-// ─── Flag button ─────────────────────────────────────────────────────────────
 
 class _FlagButton extends StatelessWidget {
   const _FlagButton({
