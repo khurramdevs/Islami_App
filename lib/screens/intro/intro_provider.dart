@@ -7,24 +7,22 @@ class IntroProvider extends ChangeNotifier {
 
   static final IntroProvider instance = IntroProvider._();
 
-  // ─── State ────────────────────────────────────────────────────────────────
-
+  // State
   int _currentPage = 0;
   IntroLanguage _selectedLanguage = IntroLanguage.english;
 
-  // ─── Getters ──────────────────────────────────────────────────────────────
-
+  // Getters for state
   int get currentPage => _currentPage;
   IntroLanguage get selectedLanguage => _selectedLanguage;
   bool get isEnglishSelected => _selectedLanguage == IntroLanguage.english;
   bool get isFirstPage => _currentPage == 0;
   bool get isLastPage => _currentPage == totalPages - 1;
 
-  // ─── Page count (total intro slides) ─────────────────────────────────────
+  // Page count (total intro slides)
 
   static const int totalPages = 5;
 
-  // ─── Actions ──────────────────────────────────────────────────────────────
+  // Actions
 
   void selectLanguage(IntroLanguage language) {
     if (_selectedLanguage == language) return;

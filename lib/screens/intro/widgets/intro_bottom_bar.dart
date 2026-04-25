@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:islami/const/app_colors.dart';
 import 'package:islami/screens/intro/intro_provider.dart';
+import 'package:islami/screens/home/home_screen.dart';
 
-/// Bottom navigation bar: Back / page dots / Next (or Finish).
 class IntroBottomBar extends StatelessWidget {
   const IntroBottomBar({super.key});
 
@@ -24,20 +24,22 @@ class IntroBottomBar extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                // Back button (invisible on first page to keep layout)
                 _NavTextButton(
                   label: 'Back',
                   visible: !provider.isFirstPage,
                   onTap: provider.goToPreviousPage,
                 ),
                 const _PageIndicatorDots(),
-                // Next or Finish on last page
                 _NavTextButton(
                   label: provider.isLastPage ? 'Finish' : 'Next',
                   visible: true,
                   onTap: provider.isLastPage
                       ? () {
-                          // TODO: navigate to home screen
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                              builder: (_) => const HomeScreen(),
+                            ),
+                          );
                         }
                       : provider.goToNextPage,
                 ),
@@ -49,8 +51,6 @@ class IntroBottomBar extends StatelessWidget {
     );
   }
 }
-
-// ─── Reusable navigation text button (Back / Next / Finish) ─────────────────
 
 class _NavTextButton extends StatelessWidget {
   const _NavTextButton({
@@ -88,8 +88,6 @@ class _NavTextButton extends StatelessWidget {
   }
 }
 
-// ─── Page indicator dots ────────────────────────────────────────────────────
-
 class _PageIndicatorDots extends StatelessWidget {
   const _PageIndicatorDots();
 
@@ -112,8 +110,6 @@ class _PageIndicatorDots extends StatelessWidget {
     );
   }
 }
-
-// ─── Single dot ──────────────────────────────────────────────────────────────
 
 class _Dot extends StatelessWidget {
   const _Dot({required this.isActive, required this.dotHeight});

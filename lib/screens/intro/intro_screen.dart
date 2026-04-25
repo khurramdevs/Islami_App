@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:islami/const/app_colors.dart';
 import 'package:islami/screens/intro/intro_page_data.dart';
 import 'package:islami/screens/intro/intro_provider.dart';
-import 'package:islami/screens/intro/widgets/intro_header.dart';
+import 'package:islami/core/widgets/islami_header.dart';
 import 'package:islami/screens/intro/widgets/language_page_content.dart';
 import 'package:islami/screens/intro/widgets/content_page_content.dart';
 import 'package:islami/screens/intro/widgets/intro_bottom_bar.dart';
@@ -23,7 +23,7 @@ class IntroScreen extends StatelessWidget {
   }
 }
 
-// ─── Root body: orchestrates header, center content, and bottom bar ──────────
+// Root body: orchestrates header, center content, and bottom bar
 
 class _IntroBody extends StatelessWidget {
   const _IntroBody();
@@ -32,12 +32,16 @@ class _IntroBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Stack(
       fit: StackFit.expand,
-      children: [IntroHeader(), _CenterContent(), IntroBottomBar()],
+      children: [
+        IslamiHeader(positioned: true),
+        _CenterContent(),
+        IntroBottomBar(),
+      ],
     );
   }
 }
 
-// ─── Center content: switches between language page and content pages ────────
+// Center content: switches between language page and content pages
 
 class _CenterContent extends StatelessWidget {
   const _CenterContent();

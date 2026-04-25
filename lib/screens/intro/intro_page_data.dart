@@ -1,9 +1,8 @@
 import 'package:islami/const/app_assets.dart';
 import 'package:islami/const/app_strings.dart';
 
-/// Data model for a single intro content page (pages 1–4).
-///
-/// Page 0 (language selection) is handled separately and does not use this.
+// Data model for a single intro content page (pages 1 to 4).
+
 class IntroPageData {
   const IntroPageData({
     required this.image,
@@ -15,15 +14,15 @@ class IntroPageData {
   final String title;
   final String subtitle;
 
-  /// The four content pages that follow the language-selection page.
+  // The four content pages that follow the language-selection page.
   static const List<IntroPageData> pages = [
     IntroPageData(
-      image: AppAssets.welcome,
+      image: AppAssets.kabba,
       title: AppStrings.welcomeTitle,
       subtitle: AppStrings.welcomeSubtitle,
     ),
     IntroPageData(
-      image: AppAssets.kabba,
+      image: AppAssets.welcome,
       title: AppStrings.quranTitle,
       subtitle: AppStrings.quranSubtitle,
     ),

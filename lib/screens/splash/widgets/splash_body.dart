@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islami/const/app_assets.dart';
 
-/// Composes all splash visual layers into a single Stack.
 class SplashBody extends StatelessWidget {
   const SplashBody({super.key});
 
@@ -21,7 +20,7 @@ class SplashBody extends StatelessWidget {
   }
 }
 
-// ─── Background ──────────────────────────────────────────────────────────────
+// Background
 
 class _Background extends StatelessWidget {
   const _Background();
@@ -33,8 +32,6 @@ class _Background extends StatelessWidget {
     );
   }
 }
-
-// ─── Left ornament ───────────────────────────────────────────────────────────
 
 class _LeftOrnament extends StatelessWidget {
   const _LeftOrnament();
@@ -51,8 +48,6 @@ class _LeftOrnament extends StatelessWidget {
   }
 }
 
-// ─── Right ornament ──────────────────────────────────────────────────────────
-
 class _RightOrnament extends StatelessWidget {
   const _RightOrnament();
 
@@ -67,8 +62,6 @@ class _RightOrnament extends StatelessWidget {
     );
   }
 }
-
-// ─── Hanging lamp ────────────────────────────────────────────────────────────
 
 class _HangingLamp extends StatelessWidget {
   const _HangingLamp();
@@ -89,8 +82,6 @@ class _HangingLamp extends StatelessWidget {
     );
   }
 }
-
-// ─── Mosque outline ──────────────────────────────────────────────────────────
 
 class _MosqueOutline extends StatelessWidget {
   const _MosqueOutline();
@@ -113,7 +104,7 @@ class _MosqueOutline extends StatelessWidget {
   }
 }
 
-// ─── Mosque logo ─────────────────────────────────────────────────────────────
+// Mosque logo
 
 class _MosqueLogo extends StatelessWidget {
   const _MosqueLogo();
@@ -136,7 +127,7 @@ class _MosqueLogo extends StatelessWidget {
   }
 }
 
-// ─── Islami wordmark ─────────────────────────────────────────────────────────
+// Islami wordmark
 
 class _IslamiWordmark extends StatelessWidget {
   const _IslamiWordmark();

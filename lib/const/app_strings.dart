@@ -3,7 +3,7 @@ class AppStrings {
 
   static const String appTitle = 'Islami';
 
-  // ─── Intro pages ────────────────────────────────────────────────────────
+  // Intro pages
 
   static const String choseLanguage = 'Chose Language';
 
