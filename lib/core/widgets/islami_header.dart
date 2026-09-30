@@ -19,9 +19,9 @@ class IslamiHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
     final double headerH = size.height * 0.22;
-    final double mosqueTop = size.height * 0.043;
+    final double mosqueTop = size.height * 0.025;
     final double mosqueW = size.width * 0.677;
-    final double islaTop = size.height * 0.123;
+    final double islaTop = size.height * 0.105;
     final double islaW = size.width * 0.386;
 
     final child = SizedBox(

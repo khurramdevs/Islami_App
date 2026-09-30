@@ -5,6 +5,7 @@ import 'package:islami/const/app_assets.dart';
 import 'package:islami/const/app_colors.dart';
 import 'package:islami/core/widgets/islami_header.dart';
 import 'package:islami/screens/home/home_provider.dart';
+import 'package:islami/screens/surah_detail/surah_detail_screen.dart';
 import 'package:islami/models/sura.dart';
 
 class HomeBody extends StatelessWidget {
@@ -158,6 +159,13 @@ class HomeBody extends StatelessWidget {
     );
   }
 
+  static void _openSurahDetail(BuildContext context, Sura sura) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => SurahDetailScreen(sura: sura)),
+    );
+  }
+
   // Suras List
 
   Widget _buildSurasList(HomeProvider provider) {
@@ -167,10 +175,9 @@ class HomeBody extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       padding: const EdgeInsets.symmetric(horizontal: 20),
       itemCount: suras.length,
-      separatorBuilder: (_, __) => Divider(
-        color: AppColors.gold.withValues(alpha: 0.25),
-        height: 1,
-        thickness: 0.5,
+      separatorBuilder: (_, __) => const Padding(
+        padding: EdgeInsets.only(left: 56),
+        child: Divider(color: AppColors.white, height: 1, thickness: 1),
       ),
       itemBuilder: (context, index) {
         final sura = suras[index];
@@ -188,67 +195,66 @@ class _RecentSuraCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 283,
-      height: 150,
-      decoration: BoxDecoration(
-        color: AppColors.gold,
-        borderRadius: BorderRadius.circular(20),
-        image: const DecorationImage(
-          image: AssetImage(AppAssets.rectanglePng),
-          fit: BoxFit.cover,
+    return GestureDetector(
+      onTap: () => HomeBody._openSurahDetail(context, sura),
+      child: Container(
+        width: 283,
+        height: 150,
+        decoration: BoxDecoration(
+          color: AppColors.gold,
+          borderRadius: BorderRadius.circular(20),
         ),
-      ),
-      clipBehavior: Clip.antiAlias,
-      child: Stack(
-        children: [
-          // Book / Quran illustration
-          Positioned(
-            right: 0,
-            bottom: 0,
-            top: 0,
-            child: Image.asset(
-              AppAssets.rectanglePng,
-              fit: BoxFit.contain,
-              height: 136,
+        clipBehavior: Clip.antiAlias,
+        child: Stack(
+          children: [
+            // Book / Quran illustration
+            Positioned(
+              right: 0,
+              bottom: 0,
+              top: 0,
+              child: Image.asset(
+                AppAssets.rectanglePng,
+                fit: BoxFit.contain,
+                height: 136,
+              ),
             ),
-          ),
-          // Text content
-          Padding(
-            padding: const EdgeInsets.all(14),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  sura.nameEn,
-                  style: const TextStyle(
-                    color: Color(0xFF2C2C2C),
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
+            // Text content
+            Padding(
+              padding: const EdgeInsets.all(14),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    sura.nameEn,
+                    style: const TextStyle(
+                      color: Color(0xFF2C2C2C),
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 2),
-                Text(
-                  sura.nameAr,
-                  style: const TextStyle(
-                    color: Color(0xFF4A4A4A),
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
+                  const SizedBox(height: 2),
+                  Text(
+                    sura.nameAr,
+                    style: const TextStyle(
+                      color: Color(0xFF4A4A4A),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  '${sura.verses} Verses',
-                  style: const TextStyle(
-                    color: Color(0xFF5A5A5A),
-                    fontSize: 12,
+                  const SizedBox(height: 4),
+                  Text(
+                    '${sura.verses} Verses',
+                    style: const TextStyle(
+                      color: Color(0xFF5A5A5A),
+                      fontSize: 12,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -260,72 +266,75 @@ class _SuraListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      child: Row(
-        children: [
-          // Number inside SVG frame
-          SizedBox(
-            width: 42,
-            height: 42,
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                SvgPicture.asset(
-                  AppAssets.numberFrameSvg,
-                  width: 42,
-                  height: 42,
-                  colorFilter: const ColorFilter.mode(
-                    AppColors.gold,
-                    BlendMode.srcIn,
+    return GestureDetector(
+      onTap: () => HomeBody._openSurahDetail(context, sura),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: Row(
+          children: [
+            // Number inside SVG frame
+            SizedBox(
+              width: 42,
+              height: 42,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  SvgPicture.asset(
+                    AppAssets.numberFrameSvg,
+                    width: 42,
+                    height: 42,
+                    colorFilter: const ColorFilter.mode(
+                      AppColors.gold,
+                      BlendMode.srcIn,
+                    ),
                   ),
-                ),
-                Text(
-                  '${sura.number}',
-                  style: const TextStyle(
-                    color: AppColors.white,
-                    fontSize: 13,
-                    fontWeight: FontWeight.bold,
+                  Text(
+                    '${sura.number}',
+                    style: const TextStyle(
+                      color: AppColors.white,
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          const SizedBox(width: 14),
-          // English name and verse count
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  sura.nameEn,
-                  style: const TextStyle(
-                    color: AppColors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
+            const SizedBox(width: 14),
+            // English name and verse count
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    sura.nameEn,
+                    style: const TextStyle(
+                      color: AppColors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 3),
-                Text(
-                  '${sura.verses} Verses',
-                  style: TextStyle(
-                    color: AppColors.white.withValues(alpha: 0.55),
-                    fontSize: 12,
+                  const SizedBox(height: 3),
+                  Text(
+                    '${sura.verses} Verses',
+                    style: TextStyle(
+                      color: AppColors.white.withValues(alpha: 0.55),
+                      fontSize: 12,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          // Arabic name
-          Text(
-            sura.nameAr,
-            style: const TextStyle(
-              color: AppColors.gold,
-              fontSize: 18,
-              fontWeight: FontWeight.w500,
+            // Arabic name
+            Text(
+              sura.nameAr,
+              style: const TextStyle(
+                color: AppColors.gold,
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
