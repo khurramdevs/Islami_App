@@ -36,4 +36,10 @@ class AppAssets {
   // Home background
 
   static const String tajMahl = '$_base/taj-mahl.png';
+  static const String hadithBackground = '$_base/Background1.png';
+  // Sura detail screen
+
+  static const String borderL = '$_base/border L.png';
+  static const String borderR = '$_base/border R.png';
+  static const String bottom = '$_base/bottom.png';
 }

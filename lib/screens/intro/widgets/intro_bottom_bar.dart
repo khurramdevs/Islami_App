@@ -35,6 +35,10 @@ class IntroBottomBar extends StatelessWidget {
                   visible: true,
                   onTap: provider.isLastPage
                       ? () {
+                          // Write the flag without awaiting — it completes in
+                          // the background during the page transition animation.
+                          // ignore: discarded_futures
+                          IntroProvider.instance.completeOnboarding();
                           Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
                               builder: (_) => const HomeScreen(),
